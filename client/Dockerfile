@@ -1,9 +1,9 @@
-# Stage 1: Build Vite React app
-FROM node:18-alpine AS build
+# Stage 1: Build the React frontend with Vite
+FROM node:20-alpine AS build
 
 WORKDIR /app
 
-# Step 1: Copy only package files and install deps (uses cache better)
+# Step 1: Copy package files and install dependencies
 COPY package.json package-lock.json ./
 RUN npm install
 
@@ -14,7 +14,6 @@ RUN npm run build
 # Stage 2: Serve with nginx
 FROM nginx:alpine
 
-# Copy built files from previous stage
 COPY --from=build /app/dist /usr/share/nginx/html
 
 EXPOSE 80
