@@ -26,7 +26,7 @@ jobs:
 
       - name: Build and push backend image
         run: |
-          docker build -t ghcr.io/aimery1990/gps-backend:latest ./server
+          docker build -t ghcr.io/aimery1990/gps-backend:latest -f server/Dockerfile .
           docker push ghcr.io/aimery1990/gps-backend:latest
 
       - name: Build and push frontend image
