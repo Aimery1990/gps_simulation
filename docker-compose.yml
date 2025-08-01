@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: gps-backend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    networks:
+      - gps-network
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: gps-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - gps-network
+
+networks:
+  gps-network:
+    driver: bridge
