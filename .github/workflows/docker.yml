@@ -2,7 +2,9 @@ name: Build and Push Docker Images to GHCR
 
 on:
   push:
-    branches: [main, api_demo]
+    branches:
+      - main
+      - api_demo
 
 jobs:
   build-and-push:
@@ -10,6 +12,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -30,12 +33,3 @@ jobs:
         run: |
           docker build -t ghcr.io/${{ github.repository_owner }}/gps-frontend:latest ./client
           docker push ghcr.io/${{ github.repository_owner }}/gps-frontend:latest
-
-name: Build and Push Docker Images to GHCR
-
-on:
-  push:
-    branches:
-      - main
-      - api_demo
-
