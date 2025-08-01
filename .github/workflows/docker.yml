@@ -26,10 +26,10 @@ jobs:
 
       - name: Build and push backend image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/gps-backend:latest ./server
-          docker push ghcr.io/${{ github.repository_owner }}/gps-backend:latest
+          docker build -t ghcr.io/aimery1990/gps-backend:latest ./server
+          docker push ghcr.io/aimery1990/gps-backend:latest
 
       - name: Build and push frontend image
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/gps-frontend:latest ./client
-          docker push ghcr.io/${{ github.repository_owner }}/gps-frontend:latest
+          docker build -t ghcr.io/aimery1990/gps-frontend:latest ./client
+          docker push ghcr.io/aimery1990/gps-frontend:latest
